@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{railroad}
-  s.version = "0.5.8"
+  s.version = "0.5.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Peter Hoeg", "Javier Smaldone"]
-  s.date = %q{2009-05-16}
+  s.date = %q{2010-11-24}
   s.default_executable = %q{railroad}
   s.description = %q{A DOT diagram generator for Ruby on Rail applications}
   s.email = ["peter@hoeg.com", "p.hoeg@northwind.sg", "javier@smaldone.com.ar"]

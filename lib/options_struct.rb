@@ -46,6 +46,9 @@ class OptionsStruct < OpenStruct
       opts.on("-e", "--exclude file1[,fileN]", Array, "Exclude given files") do |list|
         self.exclude = list
       end
+      opts.on("--only name1[,nameN]", Array, "Include only files with given names (even partial)") do |list|
+        self.only = list
+      end
       opts.on("-i", "--inheritance", "Include inheritance relations") do |i|
         self.inheritance = i
       end

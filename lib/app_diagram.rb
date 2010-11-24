@@ -46,6 +46,27 @@ class AppDiagram
     end
   end # print
 
+  protected
+  
+  def filter_only(files)
+    unless @options.only.empty?
+      f=[]
+      files.each do |file|
+        @options.only.each do |only|
+          if file.include? only
+            f<<file
+            break
+          end
+        end
+      end
+      f.uniq!
+    else
+      f=files
+    end
+    STDERR.print "Selected files: #{f.inspect}\n" if @options.verbose
+    f
+  end
+
   private 
 
   # Prevents Rails application from writing to STDOUT

@@ -25,6 +25,7 @@ class AasmDiagram < AppDiagram
     files = Dir.glob("app/models/**/*.rb") 
     files += Dir.glob("vendor/plugins/**/app/models/*.rb") if @options.plugins_models
     files -= @options.exclude
+    files = filter_only(files)
     files.each do |f| 
       process_class extract_class_name(f).constantize
     end
@@ -39,6 +40,7 @@ class AasmDiagram < AppDiagram
       files = Dir.glob("app/models/**/*.rb")
       files += Dir.glob("vendor/plugins/**/app/models/*.rb") if @options.plugins_models
       files -= @options.exclude                  
+      files = filter_only(files)
       files.each {|m| require m }
       enable_stdout
     rescue LoadError

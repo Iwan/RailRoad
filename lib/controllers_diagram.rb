@@ -26,6 +26,7 @@ class ControllersDiagram < AppDiagram
     files = Dir.glob("app/controllers/**/*_controller.rb") - @options.exclude
     # only add APP_CONTROLLER if it isn't already included from the glob above
     files << APP_CONTROLLER unless files.include? APP_CONTROLLER
+    files = filter_only(files)
     files.each do |f|
       class_name = extract_class_name(f)
       # ApplicationController's file is 'application.rb' in Rails < 2.3
@@ -43,6 +44,7 @@ class ControllersDiagram < AppDiagram
       # ApplicationController must be loaded first
       require APP_CONTROLLER
       files = Dir.glob("app/controllers/**/*_controller.rb") - @options.exclude
+      files = filter_only(files)
       files.each {|c| require c }
       enable_stdout
     rescue LoadError
